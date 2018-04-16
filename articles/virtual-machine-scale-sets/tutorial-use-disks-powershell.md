@@ -93,7 +93,7 @@ You can create and attach disks when you create a scale set, or with an existing
 ### Attach disks at scale set creation
 Create a virtual machine scale set with [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). When prompted, provide a username and password for the VM instances. To distribute traffic to the individual VM instances, a load balancer is also created. The load balancer includes rules to distribute traffic on TCP port 80, as well as allow remote desktop traffic on TCP port 3389 and PowerShell remoting on TCP port 5985.
 
-Two disks are created with the `-DataDiskSizeGb` parameter. The first disk is *64* GB in size, and the second disk is *128* GB:
+Two disks are created with the `-DataDiskSizeInGb` parameter. The first disk is *64* GB in size, and the second disk is *128* GB:
 
 ```azurepowershell-interactive
 New-AzureRmVmss `
@@ -105,7 +105,7 @@ New-AzureRmVmss `
   -PublicIpAddressName "myPublicIPAddress" `
   -LoadBalancerName "myLoadBalancer" `
   -UpgradePolicy "Automatic" `
-  -DataDiskSizeGb 64,128
+  -DataDiskSizeInGb 64,128
 ```
 
 It takes a few minutes to create and configure all the scale set resources and VM instances.
